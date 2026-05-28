@@ -188,7 +188,7 @@ const VALID_COUPONS = {
 
 export const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:5000/api'
-    : 'https://organique-backend.onrender.com/api'; // Reemplazar con URL de producción en Render
+    : 'https://freshmarket-ecommerce.onrender.com';
 
 class Store {
     constructor() {
