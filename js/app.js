@@ -15,8 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initDashboard();
     initCheckout();
 
-    // 2. Cargar datos del estudiante e imprimir en Nav y Consola
-    displayStudentInfo();
 
     // 3. Configurar selector de temas (Modo Oscuro)
     setupThemeToggler();
@@ -33,35 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // 7. Inicializar traducción inicial de página
     store.translatePage();
 });
-
-function displayStudentInfo() {
-    const container = document.getElementById("student-display");
-    if (container) {
-        const { nombre, apellido, dni } = store.state.alumno;
-        // Nombre formateado con mayúsculas iniciales
-        const formatName = (str) => str.replace(/\b\w/g, c => c.toUpperCase());
-        const infoStr = `${store.state.lang === 'es' ? 'Alumno' : 'Student'}: ${formatName(nombre)} ${formatName(apellido)} (DNI: ${dni})`;
-        container.textContent = infoStr;
-
-        // Imprimir en consola según los requerimientos del parcial
-        console.log("=== DATOS PERSONALES DEL ALUMNO ===");
-        console.log(`Nombre: ${formatName(nombre)}`);
-        console.log(`Apellido: ${formatName(apellido)}`);
-        console.log(`DNI: ${dni}`);
-        console.log("====================================");
-    }
-
-    // Escuchar cuando el idioma cambie para actualizar la etiqueta de Alumno
-    store.subscribe('lang_changed', () => {
-        const container = document.getElementById("student-display");
-        if (container) {
-            const { nombre, apellido, dni } = store.state.alumno;
-            const formatName = (str) => str.replace(/\b\w/g, c => c.toUpperCase());
-            const infoStr = `${store.state.lang === 'es' ? 'Alumno' : 'Student'}: ${formatName(nombre)} ${formatName(apellido)} (DNI: ${dni})`;
-            container.textContent = infoStr;
-        }
-    });
-}
 
 function setupThemeToggler() {
     const btn = document.getElementById("theme-toggle-btn");

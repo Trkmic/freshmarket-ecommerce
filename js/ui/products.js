@@ -128,11 +128,20 @@ function renderProductsGrid(lista) {
             starsHtml += `<span style="color: ${i <= producto.popularidad ? 'var(--color-warning)' : 'var(--border-color)'}">★</span>`;
         }
 
+        const categoryKeys = {
+            'citrico': 'filter_citrus',
+            'baya': 'filter_berries',
+            'tropical': 'filter_tropical',
+            'pomaceas': 'filter_pomaceous',
+            'cucurbitaceas': 'filter_cucurbits'
+        };
+        const categoryLabel = store.t(categoryKeys[producto.categoria] || producto.categoria);
+
         card.innerHTML = `
             <div class="product-card-img-wrapper">
                 <img src="${producto.img}" alt="${producto.nombre}">
             </div>
-            <div class="product-card-category">${producto.categoria}</div>
+            <div class="product-card-category">${categoryLabel}</div>
             <h3>${producto.nombre}</h3>
             <div style="font-size: 0.85rem; margin-bottom: 10px;">${starsHtml}</div>
             <div class="product-card-meta">
@@ -203,7 +212,16 @@ function openDetailModal(producto) {
     document.getElementById("detail-modal-img").src = producto.img;
     document.getElementById("detail-modal-img").alt = producto.nombre;
     document.getElementById("detail-modal-title").textContent = producto.nombre;
-    document.getElementById("detail-modal-category").textContent = producto.categoria;
+
+    const categoryKeys = {
+        'citrico': 'filter_citrus',
+        'baya': 'filter_berries',
+        'tropical': 'filter_tropical',
+        'pomaceas': 'filter_pomaceous',
+        'cucurbitaceas': 'filter_cucurbits'
+    };
+    const categoryLabel = store.t(categoryKeys[producto.categoria] || producto.categoria);
+    document.getElementById("detail-modal-category").textContent = categoryLabel;
     document.getElementById("detail-modal-price").textContent = `$${(producto.precio / 100).toFixed(2)}`;
 
     // Estrellas

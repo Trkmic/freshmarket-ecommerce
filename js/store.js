@@ -87,7 +87,13 @@ const TRANSLATIONS = {
         toast_salad_empty: "Por favor añade al menos una fruta a la ensalada.",
         toast_theme_dark: "Modo oscuro activado.",
         toast_theme_light: "Modo claro activado.",
-        salad_name_template: "Ensalada - {size}"
+        salad_name_template: "Ensalada - {size}",
+        filter_all: "Todas",
+        filter_citrus: "Cítricos",
+        filter_berries: "Bayas",
+        filter_tropical: "Tropicales",
+        filter_pomaceous: "Pomáceas",
+        filter_cucurbits: "Cucurbitáceas"
     },
     en: {
         tab_shop: "Shop",
@@ -176,7 +182,13 @@ const TRANSLATIONS = {
         toast_salad_empty: "Please add at least one fruit to the salad.",
         toast_theme_dark: "Dark mode activated.",
         toast_theme_light: "Light mode activated.",
-        salad_name_template: "Fruit Salad - Size {size}"
+        salad_name_template: "Fruit Salad - Size {size}",
+        filter_all: "All",
+        filter_citrus: "Citrus",
+        filter_berries: "Berries",
+        filter_tropical: "Tropical",
+        filter_pomaceous: "Pomaceous",
+        filter_cucurbits: "Cucurbits"
     }
 };
 
