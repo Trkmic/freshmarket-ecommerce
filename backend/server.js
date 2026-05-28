@@ -1,8 +1,13 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { connectDB } from './db.js';
 import apiRouter from './routes.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Cargar variables de entorno
 dotenv.config();
@@ -14,8 +19,8 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Servir archivos estáticos si se desea (opcional, el frontend está en la raíz)
-// app.use(express.static('../')); 
+// Servir archivos estáticos del frontend en la raíz
+app.use(express.static(path.join(__dirname, '..')));
 
 // Rutas
 app.use('/api', apiRouter);
