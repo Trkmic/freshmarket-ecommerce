@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organique - Frutería Premium & Wellness</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="navbar-brand">
+            <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                <path d="M12 6a6 6 0 0 0-6 6c0 2.2.8 4.2 2.1 5.7l7.8-7.8C14.4 8.6 13.3 8 12 6z" />
+            </svg>
+            <span class="logo-text">Organique</span>
+        </div>
+
+        <div class="student-info" id="student-display">
+            <!-- Cargado dinámicamente -->
+        </div>
+
+        <div class="navbar-actions">
+            <!-- Selector de idioma -->
+            <div class="lang-selector">
+                <button class="lang-btn active" data-lang="es">ES</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+
+            <!-- Toggler de Modo Oscuro -->
+            <button class="theme-toggle" id="theme-toggle-btn" aria-label="Cambiar tema">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5" />
+                    <line x1="12" y1="1" x2="12" y2="3" />
+                    <line x1="12" y1="21" x2="12" y2="23" />
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                    <line x1="1" y1="12" x2="3" y2="12" />
+                    <line x1="21" y1="12" x2="23" y2="12" />
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                </svg>
+                <svg class="moon-icon hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+            </button>
+
+            <!-- Botón Carrito Móvil -->
+            <button class="cart-trigger" id="cart-trigger-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1" />
+                    <circle cx="20" cy="21" r="1" />
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                </svg>
+                <span class="badge" id="cart-badge-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Navegación de Pestañas Principal -->
+    <nav class="main-tabs">
+        <button class="tab-link active" data-tab="shop">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            <span data-i18n="tab_shop">Tienda</span>
+        </button>
+        <button class="tab-link" data-tab="customizer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            </svg>
+            <span data-i18n="tab_salad">Ensaladas</span>
+        </button>
+        <button class="tab-link" data-tab="dashboard">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10" />
+                <line x1="12" y1="20" x2="12" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="14" />
+            </svg>
+            <span data-i18n="tab_nutrition">Dashboard Nutricional</span>
+        </button>
+        <button class="tab-link" data-tab="history">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+            </svg>
+            <span data-i18n="tab_history">Mis Pedidos</span>
+        </button>
+    </nav>
+
+    <!-- Contenedor Principal (Layout de dos columnas) -->
+    <div class="app-layout">
+
+        <!-- Área de Contenido Principal -->
+        <main class="content-area">
+
+            <!-- Vista 1: Tienda -->
+            <section id="view-shop" class="tab-content active">
+                <!-- Barra de búsqueda y Filtros avanzados -->
+                <div class="filters-container">
+                    <div class="search-wrapper">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                        <input type="text" class="search-bar" id="search-input" placeholder="Buscar frutas..."
+                            data-i18n-placeholder="search_placeholder">
+                    </div>
+
+                    <div class="filter-controls">
+                        <!-- Categorías -->
+                        <div class="category-filters" id="category-filter-list">
+                            <!-- Inyectado dinámicamente -->
+                        </div>
+
+                        <!-- Ordenamiento y Rango -->
+                        <div class="sorting-wrapper">
+                            <label for="sort-select" data-i18n="sort_label">Ordenar por:</label>
+                            <select id="sort-select" class="custom-select">
+                                <option value="default" data-i18n="sort_default">Recomendados</option>
+                                <option value="price-asc" data-i18n="sort_price_asc">Precio: Menor a Mayor</option>
+                                <option value="price-desc" data-i18n="sort_price_desc">Precio: Mayor a Menor</option>
+                                <option value="name-asc" data-i18n="sort_alpha">Nombre: A-Z</option>
+                                <option value="popularity" data-i18n="sort_pop">Popularidad</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grilla de productos -->
+                <div class="product-grid" id="products-grid-container">
+                    <!-- Tarjetas inyectadas por JS -->
+                    <div class="loader-spinner"></div>
+                </div>
+            </section>
+
+            <!-- Vista 2: Creador de Ensaladas -->
+            <section id="view-customizer" class="tab-content">
+                <div class="customizer-container">
+                    <div class="customizer-config">
+                        <h2 data-i18n="salad_builder_title">Crea tu Ensalada de Frutas</h2>
+                        <p class="section-desc" data-i18n="salad_builder_desc">Elige el tamaño del envase, mezcla tus
+                            frutas favoritas y añade deliciosos toppings.</p>
+
+                        <!-- 1. Tamaño del Envase -->
+                        <div class="custom-section">
+                            <h3 data-i18n="salad_step_size">1. Elige el tamaño del envase</h3>
+                            <div class="size-options">
+                                <label class="size-card active">
+                                    <input type="radio" name="salad-size" value="copa" checked>
+                                    <span class="size-title" data-i18n="size_cup">Copa Individual (250g)</span>
+                                    <span class="size-price">$800.00</span>
+                                </label>
+                                <label class="size-card">
+                                    <input type="radio" name="salad-size" value="tazon">
+                                    <span class="size-title" data-i18n="size_bowl">Tazón Mediano (500g)</span>
+                                    <span class="size-price">$1,400.00</span>
+                                </label>
+                                <label class="size-card">
+                                    <input type="radio" name="salad-size" value="familiar">
+                                    <span class="size-title" data-i18n="size_family">Familiar (1000g)</span>
+                                    <span class="size-price">$2,500.00</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 2. Selección de Frutas -->
+                        <div class="custom-section">
+                            <h3 data-i18n="salad_step_fruits">2. Añade tus frutas (Gramos)</h3>
+                            <div class="salad-fruits-list" id="salad-fruits-selection">
+                                <!-- Cargado dinámicamente con deslizadores de gramos -->
+                            </div>
+                        </div>
+
+                        <!-- 3. Selección de Toppings -->
+                        <div class="custom-section">
+                            <h3 data-i18n="salad_step_toppings">3. Elige los Toppings (+$300 c/u)</h3>
+                            <div class="toppings-options">
+                                <label class="topping-item">
+                                    <input type="checkbox" value="miel" data-topping-name="Miel de Abeja">
+                                    <span data-i18n="topping_honey">Miel Orgánica</span>
+                                </label>
+                                <label class="topping-item">
+                                    <input type="checkbox" value="yogur" data-topping-name="Yogur Natural">
+                                    <span data-i18n="topping_yogurt">Yogur Natural</span>
+                                </label>
+                                <label class="topping-item">
+                                    <input type="checkbox" value="granola" data-topping-name="Granola Crujiente">
+                                    <span data-i18n="topping_granola">Granola con Almendras</span>
+                                </label>
+                                <label class="topping-item">
+                                    <input type="checkbox" value="menta" data-topping-name="Menta Fresca">
+                                    <span data-i18n="topping_mint">Menta Fresca</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel de Resumen/Visualizador de Ensalada -->
+                    <div class="customizer-preview">
+                        <div class="sticky-preview-card">
+                            <h3 data-i18n="salad_preview_title">Tu Ensalada</h3>
+                            <div class="bowl-visualization">
+                                <!-- Representación gráfica con capas coloreadas -->
+                                <div class="virtual-bowl" id="virtual-bowl-element">
+                                    <div class="bowl-rim"></div>
+                                    <div class="bowl-fillings" id="bowl-fillings-container">
+                                        <!-- Capas dinámicas de colores de frutas -->
+                                    </div>
+                                    <div class="bowl-toppings-visual" id="bowl-toppings-visual-container"></div>
+                                    <div class="bowl-glass"></div>
+                                </div>
+                            </div>
+
+                            <div class="salad-nutrients-summary">
+                                <div class="nutri-badge">
+                                    <span class="n-val" id="salad-cal-val">0</span>
+                                    <span class="n-unit">kcal</span>
+                                </div>
+                                <div class="nutri-badge">
+                                    <span class="n-val" id="salad-sugar-val">0</span>
+                                    <span class="n-unit">g <span data-i18n="nutri_sugar_label">Azúcar</span></span>
+                                </div>
+                                <div class="nutri-badge">
+                                    <span class="n-val" id="salad-weight-val">0</span>
+                                    <span class="n-unit">/ <span id="salad-weight-max">250</span>g</span>
+                                </div>
+                            </div>
+
+                            <div class="salad-itemized-list" id="salad-composition-list">
+                                <p class="empty-list-text" data-i18n="salad_empty_composition">Comienza a agregar frutas
+                                    para ver el detalle.</p>
+                            </div>
+
+                            <div class="salad-total-price">
+                                <span data-i18n="salad_total_label">Precio Final:</span>
+                                <span class="price" id="salad-final-price">$0.00</span>
+                            </div>
+
+                            <button class="btn btn-primary btn-block" id="btn-add-salad-to-cart" disabled>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="9" cy="21" r="1" />
+                                    <circle cx="20" cy="21" r="1" />
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                                </svg>
+                                <span data-i18n="salad_add_cart">Agregar Ensalada</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vista 3: Dashboard Nutricional -->
+            <section id="view-dashboard" class="tab-content">
+                <div class="dashboard-container">
+                    <h2 data-i18n="dash_title">Mi Perfil de Consumo Saludable</h2>
+                    <p class="section-desc" data-i18n="dash_desc">Analiza en tiempo real el valor nutricional y
+                        vitamínico acumulado en tu carrito en comparación con las recomendaciones diarias saludables
+                        (IDR).</p>
+
+                    <div class="dashboard-grid">
+                        <!-- Tarjetas de macronutrientes totales -->
+                        <div class="dashboard-card macro-summary">
+                            <h3 data-i18n="dash_totals_title">Totales Acumulados</h3>
+                            <div class="macro-row">
+                                <div class="macro-item">
+                                    <span class="macro-label" data-i18n="nutri_cal">Calorías</span>
+                                    <span class="macro-value" id="dash-cal-total">0 kcal</span>
+                                </div>
+                                <div class="macro-item">
+                                    <span class="macro-label" data-i18n="nutri_sugar">Azúcares</span>
+                                    <span class="macro-value" id="dash-sugar-total">0 g</span>
+                                </div>
+                                <div class="macro-item">
+                                    <span class="macro-label" data-i18n="nutri_fiber">Fibra Alimentaria</span>
+                                    <span class="macro-value" id="dash-fiber-total">0 g</span>
+                                </div>
+                                <div class="macro-item">
+                                    <span class="macro-label" data-i18n="nutri_vitc">Vitamina C</span>
+                                    <span class="macro-value" id="dash-vitc-total">0 mg</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gráfico 1: Vitaminas & Minerales IDR -->
+                        <div class="dashboard-card chart-card">
+                            <h3 data-i18n="dash_chart_idr">% Cobertura de Ingesta Diaria Recomendada</h3>
+                            <div class="canvas-wrapper">
+                                <canvas id="chart-idr-canvas" width="400" height="250"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Gráfico 2: Composición del Carrito (Distribución de Frutas) -->
+                        <div class="dashboard-card chart-card">
+                            <h3 data-i18n="dash_chart_share">Distribución de Frutas en tu Carrito (g)</h3>
+                            <div class="canvas-wrapper">
+                                <canvas id="chart-share-canvas" width="400" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vista 4: Historial de Pedidos -->
+            <section id="view-history" class="tab-content">
+                <div class="history-container">
+                    <h2 data-i18n="hist_title">Mis Compras Anteriores</h2>
+                    <p class="section-desc" data-i18n="hist_desc">Consulta las facturas y el historial de compras
+                        procesadas en la plataforma.</p>
+
+                    <div class="history-list" id="order-history-list">
+                        <!-- Cargado dinámicamente con pedidos anteriores -->
+                        <div class="empty-state">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M16 16s-1.5-2-4-2-4 2-4 2M9 9h.01M15 9h.01" />
+                            </svg>
+                            <p data-i18n="hist_empty">Aún no has realizado ninguna compra.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Barra lateral derecha: Carrito de Compras (Siempre visible en Desktop) -->
+        <aside class="cart-sidebar" id="cart-sidebar-panel">
+            <div class="cart-header">
+                <h2 data-i18n="cart_title">Tu Carrito</h2>
+                <button class="cart-close-mobile" id="cart-close-mobile-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Listado de items del carrito -->
+            <div class="cart-body" id="cart-items-container">
+                <!-- Items dinámicos -->
+                <p class="cart-empty-text" data-i18n="cart_empty">No hay elementos en el carrito.</p>
+            </div>
+
+            <!-- Acciones y totalizadores del carrito -->
+            <div class="cart-footer">
+                <!-- Sección de Cupones -->
+                <div class="coupon-section">
+                    <div class="coupon-input-group">
+                        <input type="text" id="coupon-input" placeholder="Cupón de descuento"
+                            data-i18n-placeholder="coupon_placeholder">
+                        <button class="btn btn-secondary" id="btn-apply-coupon"
+                            data-i18n="coupon_apply">Aplicar</button>
+                    </div>
+                    <div class="coupon-feedback" id="coupon-feedback-msg"></div>
+                </div>
+
+                <div class="cart-summary-totals">
+                    <div class="summary-line">
+                        <span data-i18n="subtotal_label">Subtotal</span>
+                        <span id="cart-subtotal-val">$0.00</span>
+                    </div>
+                    <div class="summary-line discount hidden" id="discount-summary-line">
+                        <span data-i18n="discount_label">Descuento</span>
+                        <span id="cart-discount-val">-$0.00</span>
+                    </div>
+                    <div class="summary-line total">
+                        <span data-i18n="cart_total">Total</span>
+                        <span id="cart-total-price">$0.00</span>
+                    </div>
+                </div>
+
+                <div class="cart-actions-buttons">
+                    <button class="btn btn-danger" id="btn-clear-cart">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="3 6 5 6 21 6" />
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            <line x1="10" y1="11" x2="10" y2="17" />
+                            <line x1="14" y1="11" x2="14" y2="17" />
+                        </svg>
+                        <span data-i18n="btn_clear_cart">Vaciar carrito</span>
+                    </button>
+                    <button class="btn btn-success" id="btn-checkout-trigger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                        <span data-i18n="btn_checkout">Finalizar compra</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Backdrop del carrito móvil -->
+    <div class="cart-backdrop" id="cart-backdrop-element"></div>
+
+    <!-- MODAL 1: Detalle de Producto -->
+    <div class="modal" id="product-detail-modal">
+        <div class="modal-content scale-up">
+            <button class="modal-close" id="btn-close-detail-modal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+
+            <div class="modal-grid">
+                <div class="modal-image-wrapper">
+                    <img id="detail-modal-img" src="" alt="Fruta">
+                </div>
+                <div class="modal-info">
+                    <span class="detail-category" id="detail-modal-category">Baya</span>
+                    <h2 class="detail-title" id="detail-modal-title">Arándano Orgánico</h2>
+                    <div class="detail-rating" id="detail-modal-rating"></div>
+                    <p class="detail-price" id="detail-modal-price">$0.00</p>
+
+                    <!-- Ficha Nutricional -->
+                    <div class="nutrition-card">
+                        <h4 data-i18n="modal_nutri_title">Información Nutricional (por 100g)</h4>
+
+                        <div class="nutri-progress-group">
+                            <div class="progress-labels">
+                                <span data-i18n="nutri_cal">Calorías</span>
+                                <span id="detail-nutri-cal">57 kcal</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="bar-cal" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="nutri-progress-group">
+                            <div class="progress-labels">
+                                <span data-i18n="nutri_sugar">Azúcar</span>
+                                <span id="detail-nutri-sugar">10g</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="bar-sugar" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="nutri-progress-group">
+                            <div class="progress-labels">
+                                <span data-i18n="nutri_fiber">Fibra</span>
+                                <span id="detail-nutri-fiber">2.4g</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="bar-fiber" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="nutri-progress-group">
+                            <div class="progress-labels">
+                                <span data-i18n="nutri_vitc">Vitamina C</span>
+                                <span id="detail-nutri-vitc">9.7mg</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="bar-vitc" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-block" id="btn-modal-add-to-cart">
+                        <span data-i18n="add_to_cart">Agregar a carrito</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Formulario de Pago y Checkout -->
+    <div class="modal" id="checkout-modal">
+        <div class="modal-content scale-up checkout-modal-width">
+            <button class="modal-close" id="btn-close-checkout-modal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+
+            <div class="checkout-grid">
+                <!-- Formulario -->
+                <form class="checkout-form" id="checkout-payment-form">
+                    <h2 data-i18n="checkout_title">Finalizar Compra</h2>
+
+                    <div class="form-group">
+                        <label for="checkout-name" data-i18n="form_name">Nombre Completo</label>
+                        <input type="text" id="checkout-name" required placeholder="Ej. Juan Pérez">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="checkout-email" data-i18n="form_email">Email</label>
+                        <input type="email" id="checkout-email" required placeholder="juan@ejemplo.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="checkout-address" data-i18n="form_address">Dirección de Envío</label>
+                        <input type="text" id="checkout-address" required placeholder="Ej. Av. Siempreviva 742">
+                    </div>
+
+                    <div class="card-js-wrapper">
+                        <!-- Simulación de tarjeta -->
+                        <div class="credit-card-preview" id="credit-card-preview-element">
+                            <div class="card-face front">
+                                <div class="chip"></div>
+                                <div class="card-number-label" id="card-number-label-val">•••• •••• •••• ••••</div>
+                                <div class="card-bottom">
+                                    <div class="card-holder">
+                                        <div class="label" data-i18n="card_holder_label">TITULAR</div>
+                                        <div class="name-display" id="card-holder-name-val">NOMBRE COGNOMBRE</div>
+                                    </div>
+                                    <div class="card-expiration">
+                                        <div class="label" data-i18n="card_expiry_label">EXP</div>
+                                        <div class="expiry-display" id="card-expiry-val">MM/AA</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-face back">
+                                <div class="magnetic-strip"></div>
+                                <div class="signature-cvv">
+                                    <div class="signature"></div>
+                                    <div class="cvv-display" id="card-cvv-val">•••</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="checkout-card-number" data-i18n="form_card_num">Número de Tarjeta</label>
+                        <input type="text" id="checkout-card-number" required maxlength="19"
+                            placeholder="4500 1234 5678 9010">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="checkout-card-expiry" data-i18n="form_expiry">Expiración</label>
+                            <input type="text" id="checkout-card-expiry" required maxlength="5" placeholder="MM/AA">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="checkout-card-cvv" data-i18n="form_cvv">CVV</label>
+                            <input type="password" id="checkout-card-cvv" required maxlength="4" placeholder="123">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-block" id="btn-submit-payment">
+                        <span data-i18n="btn_pay">Pagar ahora</span>
+                    </button>
+                </form>
+
+                <!-- Resumen compra lateral en checkout -->
+                <div class="checkout-summary-pane">
+                    <h3 data-i18n="checkout_summary_title">Resumen de Compra</h3>
+                    <div class="checkout-summary-items" id="checkout-summary-items-list">
+                        <!-- Inyectado dinámicamente -->
+                    </div>
+                    <div class="checkout-summary-totals">
+                        <div class="summary-line">
+                            <span data-i18n="subtotal_label">Subtotal</span>
+                            <span id="checkout-subtotal-val">$0.00</span>
+                        </div>
+                        <div class="summary-line discount hidden" id="checkout-discount-line">
+                            <span data-i18n="discount_label">Descuento</span>
+                            <span id="checkout-discount-val">-$0.00</span>
+                        </div>
+                        <div class="summary-line total">
+                            <span data-i18n="cart_total">Total</span>
+                            <span id="checkout-total-val">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loader de procesamiento -->
+            <div class="checkout-loader hidden" id="checkout-loader-panel">
+                <div class="loader-content">
+                    <div class="spinner"></div>
+                    <h3 data-i18n="checkout_processing">Procesando tu pago...</h3>
+                    <p data-i18n="checkout_processing_sub">Por favor, no recargues la página.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Factura Digital Recibo -->
+    <div class="modal" id="receipt-modal">
+        <div class="modal-content scale-up receipt-modal-width">
+            <button class="modal-close" id="btn-close-receipt-modal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+
+            <div class="invoice-container" id="printable-invoice">
+                <div class="invoice-header">
+                    <div class="company-details">
+                        <h2>Organique S.A.</h2>
+                        <p>Av. Wellness 1234, CABA</p>
+                        <p>CUIT: 30-74629486-5</p>
+                    </div>
+                    <div class="invoice-meta">
+                        <h2 data-i18n="receipt_title">FACTURA DIGITAL</h2>
+                        <p><strong data-i18n="invoice_num">Factura N°:</strong> <span
+                                id="receipt-invoice-num">#0001</span></p>
+                        <p><strong data-i18n="invoice_date">Fecha:</strong> <span
+                                id="receipt-invoice-date">28/05/2026</span></p>
+                    </div>
+                </div>
+
+                <hr class="invoice-divider">
+
+                <div class="invoice-customer-details">
+                    <h3 data-i18n="invoice_to">Cliente:</h3>
+                    <p><strong id="receipt-customer-name">Juan Pérez</strong></p>
+                    <p id="receipt-customer-email">juan@ejemplo.com</p>
+                    <p id="receipt-customer-address">Av. Siempreviva 742</p>
+                </div>
+
+                <table class="invoice-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_product">Producto</th>
+                            <th data-i18n="table_qty">Cant.</th>
+                            <th data-i18n="table_unit_price">Precio U.</th>
+                            <th data-i18n="table_total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="receipt-invoice-table-body">
+                        <!-- Elementos inyectados -->
+                    </tbody>
+                </table>
+
+                <div class="invoice-totals-wrapper">
+                    <div class="invoice-totals">
+                        <p>Subtotal: <span id="receipt-subtotal-val">$0.00</span></p>
+                        <p class="discount hidden" id="receipt-discount-line">Descuento: <span
+                                id="receipt-discount-val">-$0.00</span></p>
+                        <h3>Total: <span id="receipt-total-val">$0.00</span></h3>
+                    </div>
+                </div>
+
+                <div class="invoice-footer">
+                    <p data-i18n="invoice_footer_thanks">¡Gracias por elegir Organique! Cuida tu cuerpo con alimentos
+                        orgánicos.</p>
+                </div>
+            </div>
+
+            <div class="receipt-actions">
+                <button class="btn btn-secondary" id="btn-print-receipt">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 6 2 18 2 18 9" />
+                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+                        <rect x="6" y="14" width="12" height="8" />
+                    </svg>
+                    <span data-i18n="btn_print">Imprimir Factura</span>
+                </button>
+                <button class="btn btn-primary" id="btn-done-receipt" data-i18n="btn_close">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor global de Toasts -->
+    <div class="toast-container" id="toast-notifications-container"></div>
+
+    <!-- Scripts de la Aplicación (módulos ES6) -->
+    <script type="module" src="./js/app.js"></script>
+</body>
+
+</html>
